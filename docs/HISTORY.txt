@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0.2 (unreleased)
+------------------
+
+- Added Hotfix, to add ftw.mail.mail to the allowed content types of tasks
+  [phgross]
+
 
 2.0.1 (2011-12-06)
 ------------------
