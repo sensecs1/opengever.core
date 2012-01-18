@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.0.3 (unreleased)
+2.0.3 (2012-01-18)
 ------------------
 
 - Implement faster custom_sort methods for sorting on the readable fullname,
