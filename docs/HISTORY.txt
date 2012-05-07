@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.0.3 (unreleased)
+2.0.3 (2012-05-07)
 ------------------
 
 - Adjust author indexers: remove LDAP or Exchange informations.
