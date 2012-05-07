@@ -5,7 +5,10 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Adjust author indexers: remove LDAP or Exchange informations.
+  Issue #1536 Dossiers: Unschoene Darstellung der Spalte "Autor" in Detailliste (PDF)
+  https://extranet.4teamwork.ch/projects/opengever-kanton-zug/sprint-backlog/1536
+  [phgross]
 
 
 2.0.2 (2012-03-28)
