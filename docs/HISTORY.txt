@@ -5,7 +5,8 @@ Changelog
 2.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added server-side component for External Editor Debug mode (blackbox upload view)
+  [lgraf]
 
 
 2.0.3 (2012-03-12)
