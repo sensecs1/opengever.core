@@ -2,8 +2,8 @@ Changelog
 =========
 
 
-2.0.6 (2012-10-16)
-------------------
+2.1 (unreleased)
+----------------
 
 - Fixed cancelbutton handling in send documents form.
   [phgross]
