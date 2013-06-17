@@ -629,3 +629,30 @@ class DocumentInSelectedDossierVocabularyFactory(grok.GlobalUtility):
                     key = doc.get('path')
                     value = doc.get('title')
                     yield (key, value)
+
+
+class BoardsVocabularyFactory(grok.GlobalUtility):
+    """Vocabulary of all assigned clients (=home clients) of the
+    current user. The current client is not included!
+    """
+
+    grok.provides(IVocabularyFactory)
+    grok.name('opengever.ogds.base.BoardsVocabularyFactory')
+
+    def __call__(self, context):
+        self.context = context
+        vocab = ContactsVocabulary.create_with_provider(
+            self.key_value_provider)
+        return vocab
+
+    def key_value_provider(self):
+        """yield all boards
+
+        key = board id
+        value = board title
+        """
+
+        info = getUtility(IContactInformation)
+
+        for board in info.get_boards():
+            yield (board.boardid, board.title)

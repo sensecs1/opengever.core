@@ -8,6 +8,7 @@ from opengever.ogds.base.interfaces import ISyncStamp
 from opengever.ogds.base.utils import brain_is_contact, get_client_id
 from opengever.ogds.base.utils import create_session
 from opengever.ogds.base.utils import get_current_client
+from opengever.ogds.models.board import Board
 from opengever.ogds.models.client import Client
 from opengever.ogds.models.group import Group
 from opengever.ogds.models.user import User
@@ -651,3 +652,7 @@ class ContactInformation(grok.GlobalUtility):
     def _clients_query(self):
         session = create_session()
         return session.query(Client)
+
+    def get_boards(self):
+        session = create_session()
+        return session.query(Board)

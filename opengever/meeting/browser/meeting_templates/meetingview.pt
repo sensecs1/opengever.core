@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="opengever.task">
+<body>
+
+
+<metal:head fill-slot="head_slot">
+    <style>
+        strong {font-weight: bold !important}
+        div#accordion h3 {
+            padding-left: 2em !important;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;}
+
+        .icons-on [class*="contenttype-"], .icons-on [class*="mimetype-"], .icons-on [class*="wf-"], .icons-on [class*="function-"], .icons-on [class*="actionicon-"], .icons-on [class*="icon-"] {
+            padding: 0em;
+        }
+
+        h3.ui-accordion-header {
+            padding-left: 2em;
+            font-weight: bold;
+        }
+        h3.ui-accordion-header.ui-state-active {
+            padding-left: 2em;
+            font-weight: bold;
+            background-image: none !important;
+            background-color: #EEEEEE !important;
+        }
+
+        span.edit {
+            float: right;
+            margin-top: 0px !important;
+            position: relative !important;
+        }
+
+        span.vote {
+            float: right;
+            margin-top: 0px !important;
+            position: relative !important;
+        }
+
+
+    </style>
+
+           <script>
+          $(function() {
+              $( "#accordion > div" )
+                  .accordion({
+                      header: " > h3",
+                      collapsible: true,
+                      active: false,
+                  })
+                  .parent().sortable({
+                      axis: "y",
+                      handle: "h3",
+                      stop: function( event, ui ) {
+                          // IE doesn't register the blur when sorting
+                          // so trigger focusout handlers to remove .ui-state-focus
+                          ui.item.children("h3").triggerHandler( "focusout" );
+                          ids = []
+                          $('.meeting_header').each(function(index, el) {
+                              ids.push(el.id);
+                          });
+                          ids = ids.join(',');
+                          jq.post('./meeting_item_order_save', {ids : ids});
+                      }
+              });
+
+          });
+          </script>
+
+<link href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.css" rel="stylesheet">
+<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+</metal:head>
+
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading" tal:content="python: context.title"/>
+
+    <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <!-- <div class="field" tal:repeat="widget view/fields/date"> -->
+    <h2>Meeting Items</h2>
+	  <table class="vertical listing">
+		  <tr tal:condition="context/date">
+			  <th i18n:translate="label_date">Date</th>
+			  <td tal:content="structure view/w/date/render"/>
+      </tr>
+      <tr tal:condition="context/participants">
+        <th i18n:translate="label_participants">Participants</th>
+			  <td tal:content="structure view/w/participants/render"/>
+      </tr>
+  </table>
+
+  <h2>Meeting Items</h2>
+    <div id="accordion">
+      <div tal:repeat="item view/get_meeting_items">
+        <h3 class="meeting_header" tal:attributes="id item/id">
+          <span tal:content="item/Title" />
+          <span class="vote ui-icon ui-icon-circle-check" />
+          <span class="vote ui-icon ui-icon-pencil"  tal:attributes="id string:${item/absolute_url}/edit" />
+        </h3>
+        <div>
+          <strong>Vortrag</strong>
+          <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+
+          <strong>Protokoll</strong>
+          <p tal:condition="item/transcript" tal:content="structure item/@@text-transform/transcript/text/html" />
+
+          <strong>Beschluss</strong>
+          <p tal:condition="item/resolution" tal:content="structure item/@@text-transform/resolution/text/html" />
+
+          <strong>Abstimmung</strong>
+          <p tal:content="item/votes" />
+        </div>
+
+      </div>
+    </div>
+
+    <div class="visualClear"><!----></div>
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+    <div class="visualClear"><!----></div>
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

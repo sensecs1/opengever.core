@@ -206,6 +206,7 @@ class Documents(OpengeverCatalogListingTab):
         'checkin',
         'cancel',
         'create_task',
+        'create_proposal',
         'trashed',
         'send_documents',
         'move_items',
@@ -215,6 +216,7 @@ class Documents(OpengeverCatalogListingTab):
     major_actions = [
         'send_documents',
         'create_task',
+        'create_proposal',
         ]
 
 
