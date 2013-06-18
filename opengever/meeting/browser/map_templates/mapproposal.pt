@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="opengever.task">
+  <body>
+
+    <metal:head fill-slot="head_slot">
+      <style>
+        div.column{
+          float: left;
+          width: 15em;
+          padding-left: 1em;
+        }
+        div.column h3{
+          padding-bottom: 2em;
+        }
+        div.proposal{
+          width: 100%;
+          height: 3em;
+          border: 1px solid rgb(229, 229, 229);
+        }
+
+        div.meeting_items{
+          width: 100%;
+          height: 3em;
+          border: 1px solid rgb(229, 229, 229);
+        }
+
+      </style>
+
+      <script>
+        $('.column').sortable({
+          connectWith: $('.column'),
+          cursor : 'move',
+          revert : true,
+          tolerance : 'pointer',
+          update : function(event, ui){
+            console.info($(this));
+          }
+        });
+
+      </script>
+
+      <link href="http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.css" rel="stylesheet">
+        <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+        </metal:head>
+
+        <metal:main fill-slot="main">
+          <tal:main-macro metal:define-macro="main">
+
+            <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+            <h1 class="documentFirstHeading">Map Proposals</h1>
+
+            <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+            <div tal:replace="structure provider:plone.abovecontentbody" />
+
+            <div class="sidebar">
+              <ul>
+                <li tal:repeat="board view/get_boards"
+                    tal:content="board/title" />
+              </ul>
+            </div>
+
+            <div class="content">
+              <div class="columns">
+                <div class="column column_no_map" id="no_map">
+                  <h3>Not planed</h3>
+                  <div class="proposal"
+                       tal:repeat="proposal view/get_not_mapped_proposals"
+                       tal:content="proposal/Title"
+                       tal:attributes="id proposal/UID"/>
+                </div>
+
+                <div class="column"
+                     tal:repeat="meeting view/get_meetings"
+                     tal:attributes="id meeting/UID">
+
+                  <h3 tal:content="meeting/Title"/>
+                  <div class="proposal"
+                       tal:repeat="item python: view.get_meeting_items(meeting)"
+                       tal:content="item/Title"
+                       tal:attributes="id item/UID"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="visualClear"><!----></div>
+            <div tal:replace="structure provider:plone.belowcontentbody" />
+            <div class="visualClear"><!----></div>
+          </tal:main-macro>
+        </metal:main>
+
+      </body>
+    </html>
