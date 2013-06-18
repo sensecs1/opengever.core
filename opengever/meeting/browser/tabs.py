@@ -1,9 +1,10 @@
+# from opengever.tabbedview.helper import readable_ogds_board
 from five import grok
 from ftw.table import helper
 from opengever.meeting import _
 from opengever.tabbedview.browser.tabs import OpengeverCatalogListingTab
 from opengever.tabbedview.helper import linked
-# from opengever.tabbedview.helper import readable_ogds_board
+from opengever.tabbedview.helper import workflow_state
 
 
 class Meetings(OpengeverCatalogListingTab):
@@ -47,9 +48,11 @@ class Proposals(OpengeverCatalogListingTab):
 
         {'column': 'responsible',
          'column_title': _(u'label_responsible_board',
-                           default=u'Responsible board'),
-         }
-         # 'transform': readable_ogds_board}
+                           default=u'Responsible board')},
+
+        {'column': 'review_state',
+         'column_title': _(u'label_review_state', default=u'Review state'),
+         'transform': workflow_state},
     )
 
 
