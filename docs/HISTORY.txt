@@ -4,7 +4,9 @@ Changelog
 3.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- OGDS updater: Deal with mutli-valued fields named the same as an OGDS column.
+  Backport of c54b816.
+  [lgraf]
 
 
 3.1.4 (2014-02-18)
