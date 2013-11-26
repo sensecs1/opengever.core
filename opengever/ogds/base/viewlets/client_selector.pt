@@ -1,0 +1,22 @@
+<div id="portal-client-selector-wrapper" i18n:domain="plone" tal:define="current_client view/get_current_client">
+
+  <h5 class="hiddenStructure" i18n:translate="heading_client_selector">Client Selector</h5>
+
+  <dl class="clientMenu actionMenu deactivated" id="portal-client-selector">
+    <dt class="clientMenuHeader actionMenuHeader">
+      <a tal:attributes="href string:#" tal:content="current_client/title">
+        CLIENT ?
+      </a>
+	    <div class="visualClear"><!-- --></div>
+    </dt>
+    <dd class="clientMenuContent">
+      <ul>
+        <li tal:repeat="client view/get_clients">
+          <a href="" tal:attributes="href string:${client/public_url}/change_client?client_id=${client/client_id}" tal:content="client/title">
+            client title
+          </a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+</div>

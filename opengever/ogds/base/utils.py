@@ -17,6 +17,9 @@ import urllib
 import urllib2
 
 
+CLIENT_SELECTOR_CURRENT_CLIENT = 'current_client'
+
+
 EXPECTED_ENCODINGS = (
     'utf8',
     'iso-8859-1',
@@ -63,14 +66,23 @@ def client_id_cachekey(method):
     return 'get_client_id:%s' % (context.id)
 
 
-@ram.cache(client_id_cachekey)
+# @ram.cache(client_id_cachekey)
 def get_client_id():
     """Returns the client_id of the current client.
     """
 
+    request = getRequest()
+
+    if request.SESSION and request.SESSION.get(CLIENT_SELECTOR_CURRENT_CLIENT):
+        return request.SESSION.get(CLIENT_SELECTOR_CURRENT_CLIENT)
+
     registry = getUtility(IRegistry)
     proxy = registry.forInterface(IClientConfiguration)
     return proxy.client_id
+
+
+def set_client_id(client_id):
+    getRequest().SESSION[CLIENT_SELECTOR_CURRENT_CLIENT] = client_id
 
 
 def client_public_url_cachekey(method):

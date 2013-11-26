@@ -1,0 +1,67 @@
+Feedback Portal:
+ - http://feedback.onegov.ch/t/mandantenkonzept-erweitern/39
+
+Proof of concept:
+ - opengever.core: pg_virtual_gever_client
+ - plonetheme.teamraum: pg_virtual_gever_client
+
+
+Ideas:
+ClientSelector:
+=================
+ - Ermöglicht den Mandantenwechsel
+ - Visualisiert den aktuellen Mandanten
+ - Aktuelle client_
+
+Current client:
+===============
+ - Die ID des aktuellen Mandanten wird in die SESSION gespeichert
+ - Die OGDS-helpers `get_client_id` liest den aktuellen Client aus der Session.
+
+Client Index:
+=============
+ - Für jeden Context wird der aktuelle Mandant (get_client_id()) gespeichert.
+ - ??? Noch offen ist ob dieser Wert nur beim Erstellen eines Contextes berrechnet werden soll und dann nicht mehr aktualisiert wird.
+ - ??? View für Mandantewechsel eines Objektes implementieren
+ - ??? Darstellen des mandanten wertes bei Objekten
+
+Personaloverview:
+=================
+ - MyDossiers:
+   - search_options erweitern: 'client_id': get_client_id()
+ - MyDocuments:
+   - search_options erweitern: 'client_id': get_client_id()
+ - MyDocuments:
+   - search_options erweitern: 'client_id': get_client_id()
+ - Mytasks: Done
+ - IssuedTasks:
+   - search_options erweitern: 'client_id': get_client_id()
+ - AllTasks: Done
+ - AllIssuedTasks
+   - search_options erweitern: 'client_id': get_client_id()
+
+Inbox:
+======
+Es wird nachwie vor nur ein Eingangskorb Objekt vorhanden sein, mit dem Zusammenspiel von Eingangskorb und ClientSelector, werden dem Benutzer aber mehere Eingangskörbe, ja gar mehrere Mandanten vorgegaukelt.
+
+InboxTabs:
+----------
+ - Overview:
+   - assigned_tasks: OK
+   - issued_tasks: OK
+   - Documents: search_options erweitern: 'client_id': get_client_id()
+ - Documents:
+   - Documents: search_options erweitern: 'client_id': get_client_id()
+ - AssignedInboxTasks: OK
+ - IssuedInboxTasks: OK
+
+ClosedForwardings:
+------------------
+ - ClosedForwardings: ??? search_options erweitern: 'client_id': get_client_id()
+
+
+Client Setup:
+=============
+ Für die Erstellung von virtuellen Clients muss das Setup angepasst werden:
+ - Variante 1: Client setup wird ergänzt um property `virtual_client`:
+   - Das property würde in der setup view nur dazu führen das der client ins ogds geschrieben würde, plone site and stuff würde nicht erstellt.
