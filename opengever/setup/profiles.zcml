@@ -13,16 +13,24 @@
           provides="Products.GenericSetup.interfaces.EXTENSION"
           />
 
-    <genericsetup:importStep
-          name="opengever.setup"
-          title="opengever.setup various imports"
-          description=""
-          handler="opengever.setup.setuphandlers.import_various" />
+    <genericsetup:registerProfile
+          name="init"
+          title="opengever.setup: init"
+          directory="profiles/init"
+          description="Initial content creation"
+          provides="Products.GenericSetup.interfaces.EXTENSION"
+          />
 
-	<genericsetup:importStep
-		  name="opengever.import_roles"
-		  title="opengever.setup global roles imports"
-		  description=""
-		  handler="opengever.setup.setuphandlers.set_global_roles" />
+    <genericsetup:importStep
+        name="opengever.setup"
+        title="opengever.setup various imports"
+        description=""
+        handler="opengever.setup.setuphandlers.import_various" />
+
+	  <genericsetup:importStep
+		    name="opengever.import_roles"
+		    title="opengever.setup global roles imports"
+		    description=""
+		    handler="opengever.setup.setuphandlers.set_global_roles" />
 
 </configure>

@@ -1,0 +1,12 @@
+[
+  {"_path": "eingangskorb",
+   "_type": "opengever.inbox.inbox",
+   "title": "Eingangskorb",
+   "_ac_local_roles": {
+     "og_mandant1_eingangskorb": ["Reader",
+                                  "Editor",
+                                  "Contributor"],
+   },
+  }
+]
+x

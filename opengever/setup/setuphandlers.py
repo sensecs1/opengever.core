@@ -178,8 +178,8 @@ def import_various(setup):
     if setup.readDataFile('opengever.setup.txt') is None:
         return
     site = setup.getSite()
-    create_repository_root(site)
-    start_import(site)
+    # create_repository_root(site)
+    # start_import(site)
     settings(site)
     assign_portlets(site)
     disable_site_syndication(site)
