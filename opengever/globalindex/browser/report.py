@@ -2,13 +2,13 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.statusmessages.interfaces import IStatusMessage
 from datetime import datetime
 from five import grok
+from opengever.base.behaviors.utils import set_attachment_content_disposition
 from opengever.base.reporter import StringTranslater, XLSReporter
 from opengever.base.reporter import format_datetime, get_date_style
 from opengever.base.reporter import readable_author
-from opengever.base.behaviors.utils import set_attachment_content_disposition
 from opengever.globalindex import _
 from opengever.globalindex.utils import get_selected_items
-from opengever.ogds.base.utils import get_client_id
+from opengever.ogds.base.utils import get_current_admin_unit
 from opengever.task.util import getTaskTypeVocabulary
 from zope.app.component.hooks import getSite
 from zope.i18n import translate
@@ -82,8 +82,8 @@ class TaskReporter(grok.View):
             sheet_title=translate(
                 _('label_tasks', default=u'Tasks'), context=self.request),
             footer='%s %s' % (
-                datetime.now().strftime('%d.%m.%Y %H:%M'), get_client_id())
-            )
+                datetime.now().strftime('%d.%m.%Y %H:%M'),
+                get_current_admin_unit().label()))
 
         data = reporter()
         if not data:
