@@ -7,6 +7,7 @@ from opengever.base.browser.helper import get_css_class
 from opengever.base.source import DossierPathSourceBinder
 from opengever.globalindex.interfaces import ITaskQuery
 from opengever.ogds.base.interfaces import IContactInformation
+from opengever.ogds.base.utils import get_current_admin_unit
 from opengever.tabbedview.helper import linked
 from opengever.task import _
 from opengever.task import util
