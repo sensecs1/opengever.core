@@ -322,9 +322,9 @@ class AdvancedSearchForm(directives_form.Form):
             'document_date_2',
         ]
 
-        for field in date_fields:
+        for field_name in date_fields:
             self.fields.get(
-                field).widgetFactory[INPUT_MODE] = DatePickerFieldWidget
+                field_name).widgetFactory[INPUT_MODE] = DatePickerFieldWidget
 
         searchableText = self.widgets["searchableText"]
         searchableText.value = self.request.get('SearchableText')
