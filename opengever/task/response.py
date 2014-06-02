@@ -1,13 +1,15 @@
 from Acquisition import aq_inner
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
 from five import grok
 from opengever.base.browser.helper import get_css_class
-from opengever.base.browser.opengeverview import OpengeverView
 from opengever.base.source import DossierPathSourceBinder
 from opengever.globalindex.interfaces import ITaskQuery
 from opengever.ogds.base.interfaces import IContactInformation
 from opengever.tabbedview.helper import linked
-from opengever.task import util
 from opengever.task import _
+from opengever.task import util
 from opengever.task.adapters import IResponseContainer, Response
 from opengever.task.interfaces import IResponseAdder
 from opengever.task.interfaces import IWorkflowStateSyncer
@@ -16,9 +18,6 @@ from opengever.task.task import ITask
 from plone.autoform.form import AutoExtensibleForm
 from plone.memoize.view import memoize
 from plone.z3cform import layout
-from Products.CMFCore.utils import getToolByName
-from Products.Five.browser import BrowserView
-from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import form, field, button
 from z3c.form.browser import radio
 from z3c.form.interfaces import HIDDEN_MODE
@@ -276,8 +275,10 @@ class AddForm(form.AddForm, AutoExtensibleForm):
         form.AddForm.updateWidgets(self)
         if self.context.portal_type == 'opengever.inbox.forwarding':
             self.widgets['relatedItems'].mode = HIDDEN_MODE
-        ogview = OpengeverView({}, {})
-        if not ogview.is_user_assigned_to_client():
+
+        mtool = getToolByName(self.context, 'portal_membership')
+        current_user = mtool.getAuthenticatedMember()
+        if current_user in get_current_admin_unit().assigned_users:
             self.widgets['relatedItems'].mode = HIDDEN_MODE
 
         self.widgets['transition'].mode = HIDDEN_MODE
