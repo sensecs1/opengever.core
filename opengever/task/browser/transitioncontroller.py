@@ -276,7 +276,7 @@ class TaskTransitionController(BrowserView):
         """Checks if:
         - The current user is the issuer
         """
-        return self._is_issuer_or_inbox_group_user()
+        return self._is_issuer_xor_inbox_group_user()
 
     @action('task-transition-open-tested-and-closed')
     def open_to_closed_action(self, transition):
@@ -332,7 +332,7 @@ class TaskTransitionController(BrowserView):
     def resolved_to_closed_guard(self):
         """Checks if:
         - The current user is the issuer of the task"""
-        return self._is_issuer_or_inbox_group_user()
+        return self._is_issuer_xor_inbox_group_user()
 
     @action('task-transition-resolved-tested-and-closed')
     def resolved_to_closed_action(self, transition):
@@ -431,6 +431,13 @@ class TaskTransitionController(BrowserView):
                 getMultiAdapter((self.context, self.request),
                                 name='plone_portal_state').member().id
                 )
+
+
+    def _is_issuer_xor_inbox_group_user(self):
+        if self._is_responsible():
+            return self._is_issuer() and not self._is_issuer_inbox_group_user()
+        else:
+            return self._is_issuer(include_inbox_group=True)
 
     def _is_issuer_or_inbox_group_user(self):
         """Checks if the current user is the issuer of the
