@@ -2,7 +2,7 @@ from ftw.tabbedview.browser.listing import \
     ListingView as FtwTabbedviewListingView
 from ftw.tabbedview.browser.listing import \
     CatalogListingView as FtwTabbedviewCatalogListingView
-from zope.app.pagetemplate import ViewPageTemplateFile
+from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 
 
 class ListingView(FtwTabbedviewListingView):

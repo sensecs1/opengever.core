@@ -7,8 +7,8 @@ from opengever.base.browser.wizard.interfaces import IWizardDataStorage
 from opengever.ogds.base.utils import remote_request
 from persistent.dict import PersistentDict
 from zope.annotation.interfaces import IAnnotations
-from zope.app.component.hooks import getSite
 from zope.component import getUtility
+from zope.component.hooks import getSite
 from zope.interface import Interface
 import json
 

@@ -3,8 +3,8 @@ from five.grok import subscribe
 from opengever.globalindex.handlers.task import index_task
 from opengever.ogds.base.interfaces import IContactInformation
 from opengever.task.task import ITask
-from zope.app.container.interfaces import IObjectAddedEvent
 from zope.component import getUtility
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 
 

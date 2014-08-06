@@ -26,10 +26,10 @@ from opengever.tabbedview.utils import get_translated_types
 from opengever.task.helper import task_type_helper
 from plone.dexterity.interfaces import IDexterityContainer
 from plone.registry.interfaces import IRegistry
-from zope.app.component.hooks import getSite
-from zope.app.pagetemplate import ViewPageTemplateFile
+from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from zope.component import getUtility, adapts
 from zope.component import queryAdapter
+from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope.interface import implements
 from zope.interface import Interface

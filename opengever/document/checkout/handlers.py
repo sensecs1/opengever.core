@@ -1,14 +1,12 @@
-from Products.CMFCore.utils import getToolByName
-from Products.CMFEditions.interfaces.IArchivist import \
-    ArchivistUnregisteredError
-from Products.CMFEditions.interfaces.IModifier import \
-    FileTooLargeToVersionError
-from Products.CMFPlone.utils import base_hasattr
 from five import grok
 from opengever.document import _
 from opengever.document.document import IDocumentSchema
 from opengever.task.util import CUSTOM_INITIAL_VERSION_MESSAGE
-from zope.app.container.interfaces import IObjectAddedEvent
+from Products.CMFCore.utils import getToolByName
+from Products.CMFEditions.interfaces.IArchivist import ArchivistUnregisteredError
+from Products.CMFEditions.interfaces.IModifier import FileTooLargeToVersionError
+from Products.CMFPlone.utils import base_hasattr
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 
 
 # A special Attribute for the migration

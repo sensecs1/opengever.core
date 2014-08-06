@@ -4,7 +4,7 @@ from opengever.ogds.base.interfaces import IOGDSUpdater
 from opengever.ogds.base.ldap_import.import_stamp import set_remote_import_stamp
 from optparse import OptionParser
 from Testing.makerequest import makerequest
-from zope.app.component.hooks import setSite
+from zope.component.hooks import setSite
 import AccessControl
 import logging
 import time

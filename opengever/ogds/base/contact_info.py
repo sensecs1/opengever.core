@@ -1,6 +1,3 @@
-from Products.CMFCore.utils import getToolByName
-from Products.ZCatalog.ZCatalog import ZCatalog
-from Products.ZCatalog.interfaces import ICatalogBrain
 from five import grok
 from opengever.ogds.base import _
 from opengever.ogds.base.interfaces import IContactInformation, IUser
@@ -13,8 +10,11 @@ from opengever.ogds.models.group import Group
 from opengever.ogds.models.group import groups_users
 from opengever.ogds.models.user import User
 from plone.memoize import ram
-from zope.app.component.hooks import getSite
+from Products.CMFCore.utils import getToolByName
+from Products.ZCatalog.interfaces import ICatalogBrain
+from Products.ZCatalog.ZCatalog import ZCatalog
 from zope.component import getUtility
+from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope.i18n import translate
 import logging

@@ -1,21 +1,22 @@
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from ftw.testing import MockTestCase
-from opengever.ogds.base.interfaces import IClientConfiguration
-from plone.registry.interfaces import IRegistry
 from mocker import ANY
+from opengever.ogds.base.interfaces import IClientConfiguration
 from opengever.ogds.base.interfaces import IContactInformation
 from opengever.ogds.models.group import Group
-from opengever.task.browser.transitioncontroller import \
-    ITaskTransitionController, TaskTransitionController
+from opengever.task.browser.transitioncontroller import ITaskTransitionController
+from opengever.task.browser.transitioncontroller import TaskTransitionController
 from opengever.task.interfaces import ISuccessorTaskController
 from opengever.task.task import ITask
+from plone.registry.interfaces import IRegistry
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from xml.dom.minidom import parse
-from zope.interface import Interface
-from zope.app.component.hooks import setSite
-from zope.interface import alsoProvides
 from zope.component import getSiteManager
+from zope.component.hooks import setSite
+from zope.interface import alsoProvides
+from zope.interface import Interface
 from zope.interface.verify import verifyClass
 import os.path
+
 
 class TestTaskTransitionController(MockTestCase):
 

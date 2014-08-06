@@ -1,7 +1,5 @@
 """Contains the Code for forwarding content type    """
 from Acquisition import aq_inner, aq_parent
-from Products.CMFCore.interfaces import IActionSucceededEvent
-from Products.statusmessages.interfaces import IStatusMessage
 from datetime import datetime
 from five import grok
 from opengever.inbox import _
@@ -11,10 +9,12 @@ from opengever.task import _ as task_mf
 from opengever.task.task import ITask, Task
 from plone.directives import form
 from plone.directives.dexterity import AddForm
+from Products.CMFCore.interfaces import IActionSucceededEvent
+from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.interfaces import HIDDEN_MODE
 from zope import schema
-from zope.app.container.interfaces import IObjectAddedEvent
 from zope.interface import implements
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 
 
 class IForwarding(ITask):

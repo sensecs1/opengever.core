@@ -15,9 +15,9 @@ from Products.CMFPlone.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.interfaces import IValue
 from z3c.relationfield.relation import RelationValue
-from zope.app.component.hooks import getSite
 from zope.component import getUtility
 from zope.component import queryMultiAdapter
+from zope.component.hooks import getSite
 from zope.event import notify
 from zope.intid.interfaces import IIntIds
 from zope.lifecycleevent import Attributes

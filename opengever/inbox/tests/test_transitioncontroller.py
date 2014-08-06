@@ -1,10 +1,10 @@
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from ftw.testing import MockTestCase
 from opengever.inbox.browser.transitioncontroller import ForwardingTransitionController
 from opengever.ogds.base.interfaces import IContactInformation
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from xml.dom.minidom import parse
-from zope.app.component.hooks import setSite
 from zope.component import getSiteManager
+from zope.component.hooks import setSite
 from zope.interface import alsoProvides
 import os
 

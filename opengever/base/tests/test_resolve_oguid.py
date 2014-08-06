@@ -1,15 +1,15 @@
 from AccessControl.SecurityManagement import SpecialUsers
-from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from mocker import Mocker, Expect
 from opengever.base.browser.resolveoguid import ResolveOGUIDView
 from opengever.ogds.base.interfaces import IClientConfiguration
 from opengever.ogds.base.interfaces import IContactInformation
 from plone.mocktestcase import MockTestCase
 from plone.registry.interfaces import IRegistry
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from unittest2 import TestCase
 from zExceptions import Unauthorized
-from zope.app.component.hooks import setSite
 from zope.component import getGlobalSiteManager
+from zope.component.hooks import setSite
 from zope.interface import alsoProvides
 from zope.intid.interfaces import IIntIds
 

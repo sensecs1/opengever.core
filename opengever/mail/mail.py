@@ -3,8 +3,8 @@ from datetime import date
 from datetime import datetime
 from email.MIMEText import MIMEText
 from five import grok
-from ftw.mail import utils
 from ftw.mail import _ as ftw_mf
+from ftw.mail import utils
 from ftw.mail.mail import IMail
 from opengever.base import _ as base_mf
 from opengever.document.behaviors import metadata as ogmetadata
@@ -20,7 +20,7 @@ from plone.supermodel.model import Fieldset
 from sqlalchemy import func
 from z3c.form.interfaces import DISPLAY_MODE
 from zope import schema
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope.i18n import translate
 from zope.interface import Interface, alsoProvides
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
@@ -33,7 +33,7 @@ import re
 IMail.setTaggedValue(FIELDSETS_KEY, [
     Fieldset('common',
              label=base_mf(u'fieldset_common', u'Common'),
-             fields=[u'title', u'message'])
+             fields=[u'message'])
 ])
 
 
@@ -48,7 +48,7 @@ class IOGMail(form.Schema):
     form.fieldset(
         u'common',
         label=base_mf(u'fieldset_common', u'Common'),
-        fields=[u'title', u'message'])
+        fields=[u'title'])
 
     form.order_before(title='message')
     dexteritytextindexer.searchable('title')

@@ -1,15 +1,15 @@
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.CMFCore.utils import getToolByName
-from StringIO import StringIO
 from opengever.ogds.base.exceptions import ClientNotFound
 from opengever.ogds.base.interfaces import IClientConfiguration
 from opengever.ogds.base.interfaces import IContactInformation
 from opengever.ogds.models.client import Client
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from StringIO import StringIO
 from z3c.saconfig import named_scoped_session
-from zope.app.component.hooks import getSite, setSite
 from zope.component import getUtility
+from zope.component.hooks import getSite, setSite
 from zope.globalrequest import getRequest
 import json
 import os.path

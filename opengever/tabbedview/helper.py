@@ -7,11 +7,10 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.memoize import ram
 from Products.CMFCore.interfaces._tools import IMemberData
 from Products.CMFPlone import PloneMessageFactory as pmf
-from Products.PluggableAuthService.interfaces.authservice import \
-    IPropertiedUser
-from zope.app.component.hooks import getSite
+from Products.PluggableAuthService.interfaces.authservice import IPropertiedUser
 from zope.component import getMultiAdapter
 from zope.component import getUtility
+from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope.i18n import translate
 import cgi

@@ -1,14 +1,14 @@
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from datetime import datetime
 from five import grok
 from ftw.dictstorage.interfaces import IDictStorage
 from ftw.dictstorage.interfaces import ISQLAlchemy
 from opengever.ogds.base.interfaces import IContactInformation, ISyncStamp
 from opengever.ogds.base.utils import remote_request
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from urllib2 import URLError
 from zope.annotation.interfaces import IAnnotations
-from zope.app.component.hooks import getSite
 from zope.component import getUtility
+from zope.component.hooks import getSite
 from zope.globalrequest import setRequest
 from zope.interface import implements
 import logging

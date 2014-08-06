@@ -1,11 +1,11 @@
 from Acquisition import aq_inner, aq_parent
-from Products.CMFCore.interfaces import IActionSucceededEvent
 from datetime import datetime
 from five import grok
 from opengever.task.task import ITask
 from opengever.task.util import add_simple_response
 from plone.dexterity.interfaces import IDexterityContent
-from zope.app.container.interfaces import IObjectAddedEvent
+from Products.CMFCore.interfaces import IActionSucceededEvent
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 
 
 @grok.subscribe(IDexterityContent, IObjectAddedEvent)

@@ -1,11 +1,11 @@
-from Products.CMFPlone.utils import getToolByName
 from opengever.base.browser.helper import get_css_class
 from opengever.globalindex.interfaces import ITaskQuery
 from opengever.ogds.base.interfaces import IContactInformation
 from opengever.ogds.base.utils import get_client_id
-from zope.app.component.hooks import getSite
+from Products.CMFPlone.utils import getToolByName
 from zope.component import getUtility
 from zope.component import queryUtility
+from zope.component.hooks import getSite
 
 
 def indexed_task_link(item, display_client=False):

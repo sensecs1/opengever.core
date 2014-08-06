@@ -1,5 +1,3 @@
-from Products.CMFCore.utils import getToolByName
-from Products.statusmessages.interfaces import IStatusMessage
 from five import grok
 from opengever.ogds.base.interfaces import IContactInformation
 from opengever.ogds.base.interfaces import ITransporter
@@ -8,12 +6,14 @@ from opengever.ogds.base.vocabulary import ContactsVocabulary
 from opengever.task import _
 from plone.directives.form import Schema
 from plone.z3cform import layout
+from Products.CMFCore.utils import getToolByName
+from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form.button import buttonAndHandler
 from z3c.form.field import Fields
 from z3c.form.form import Form
 from zope import schema
-from zope.app.component.hooks import getSite
 from zope.component import getUtility
+from zope.component.hooks import getSite
 from zope.interface import Interface
 from zope.schema.interfaces import IVocabularyFactory
 

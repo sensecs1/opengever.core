@@ -1,15 +1,15 @@
 from Acquisition import aq_inner, aq_parent
-from OFS.interfaces import IObjectWillBeMovedEvent
-from Products.CMFCore.utils import getToolByName
 from five import grok
+from OFS.interfaces import IObjectWillBeMovedEvent
 from opengever.base.interfaces import IReferenceNumber
 from opengever.base.interfaces import IReferenceNumberPrefix
 from opengever.dossier.behaviors.dossier import IDossierMarker, IDossier
 from opengever.globalindex.handlers.task import index_task
-from zope.app.container.interfaces import IObjectAddedEvent
-from zope.app.container.interfaces import IObjectMovedEvent
+from Products.CMFCore.utils import getToolByName
 from zope.component import getAdapter
+from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.lifecycleevent.interfaces import IObjectMovedEvent
 
 
 @grok.subscribe(IDossierMarker, IObjectWillBeMovedEvent)
