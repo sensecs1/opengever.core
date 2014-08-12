@@ -109,16 +109,6 @@ class ContactInformation(grok.GlobalUtility):
 
         return principal and ':' not in principal
 
-    def list_group_users(self, groupid):
-        """Return all users of a group"""
-
-        if groupid:
-            session = create_session()
-            group = session.query(Group).get(groupid)
-            if group:
-                return group.users
-        return []
-
     def list_user_groups(self, userid):
         if userid:
             session = create_session()
