@@ -213,4 +213,13 @@
         profile="opengever.base:default"
         />
 
+    <!-- 4001 -> 4100 -->
+    <upgrade-step:importProfile
+        title="Add Remove GEVER content permission"
+        profile="opengever.base:default"
+        source="4001"
+        destination="4100"
+        directory="profiles/4100"
+        />
+
 </configure>

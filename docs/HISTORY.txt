@@ -5,6 +5,9 @@ Changelog
 4.1.0 (unreleased)
 ------------------
 
+- Add new permission `Remove GEVER content`.
+  [phgross]
+
 - Rewrite gever setup.
   - Introduce two zcml directives to configure deployments and ldap profiles.
   - Simplify deloyment form, remove multi-client configuration options.
@@ -26,7 +29,7 @@ Changelog
 
 - Fixed mail download for mails with already CRLF.
   [phgross]
-  
+
 - Add new type Inbox Container.
   [phgross]
 
