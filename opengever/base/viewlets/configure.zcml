@@ -19,6 +19,14 @@
         permission="zope2.View"
         />
 
+    <browser:viewlet
+        name="opengever.base.notification"
+        layer="opengever.base.interfaces.IOpengeverBaseLayer"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".notification.Notification"
+        permission="zope2.View"
+        />
+
    <browser:viewlet
        name="plone.belowcontenttitle.documentbyline"
        for="plone.dexterity.interfaces.IDexterityContainer"
