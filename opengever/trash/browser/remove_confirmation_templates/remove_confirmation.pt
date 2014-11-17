@@ -1,0 +1,24 @@
+<metal:page define-macro="master">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="ftw.tabbedview">
+
+  <head>
+  </head>
+  <body>
+
+
+    <div metal:fill-slot="main" class="tabbedview_view"
+         tal:define="came_from python:request.get('HTTP_REFERER', context.absolute_url()).split('?')[0];">
+      <metal:main-macro define-macro="main">
+
+        <div>PETER</div>
+      </metal:main-macro>
+    </div>
+  </body>
+</html>
+</metal:page>
