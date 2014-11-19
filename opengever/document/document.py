@@ -7,6 +7,7 @@ from opengever.document import _
 from opengever.document.behaviors.related_docs import IRelatedDocuments
 from opengever.document.interfaces import ICheckinCheckoutManager
 from opengever.dossier.behaviors.dossier import IDossierMarker
+from plone import api
 from plone.autoform import directives as form_directives
 from plone.dexterity.content import Item
 from plone.directives import form
@@ -122,6 +123,13 @@ class Document(Item):
     @property
     def restore_transition(self):
         return 'document-transition-restore'
+
+    @property
+    def is_trashed(self):
+        if api.content.get_state(obj=self) == 'document-state-removed':
+            return True
+
+        return False
 
     def related_items(self):
         relations = IRelatedDocuments(self).relatedItems
