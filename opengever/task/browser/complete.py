@@ -300,7 +300,7 @@ class CompleteSuccessorTaskReceiveDelivery(grok.View):
 
         with CustomInitialVersionMessage(message, self.context.REQUEST):
             for item in data['documents']:
-                doc = transporter.create(item, data)
+                doc = transporter.create(item, self.context)
 
                 # append `RE:` prefix to the document title
                 doc.title = '%s: %s' % (
