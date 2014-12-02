@@ -249,13 +249,13 @@ class TaskDocumentsTransporter(grok.GlobalUtility):
         intids = getUtility(IIntIds)
 
         for item in data:
-            item = encode_after_json(item)
-            obj = transporter._create_object(target, item)
+            obj = transporter.create(item, target)
 
             oldintid = IAnnotations(obj)[ORIGINAL_INTID_ANNOTATION_KEY]
             newintid = intids.getId(obj)
             intids_mapping[oldintid] = newintid
 
+            # XXX Necessary ?
             # fire the added Event to automaticly create a inital version
             notify(ObjectAddedEvent(obj))
 
@@ -272,7 +272,7 @@ class ExtractDocuments(grok.View):
         data = []
 
         for doc in self.get_documents():
-            data.append(transporter._extract_data(doc))
+            data.append(transporter.extract(doc))
 
         # Set correct content type for JSON response
         self.request.response.setHeader("Content-type", "application/json")
