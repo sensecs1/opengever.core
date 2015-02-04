@@ -1,3 +1,4 @@
+from opengever.activity import is_activity_feature_enabled
 from opengever.activity.utils import notification_center
 from plone.app.layout.viewlets import common
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -7,6 +8,9 @@ class NotificationViewlet(common.ViewletBase):
 
     index = ViewPageTemplateFile('notification.pt')
     notifications = []
+
+    def available(self):
+        return is_activity_feature_enabled()
 
     def num_unread(self):
         notifications = self.fetch_notifications()
