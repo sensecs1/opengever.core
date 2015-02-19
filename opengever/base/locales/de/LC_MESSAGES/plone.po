@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2010-08-11 09:27+0000\n"
-"PO-Revision-Date: 2012-12-04 09:30+0100\n"
+"PO-Revision-Date: 2015-02-19 18:06+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -204,6 +204,9 @@ msgstr "deaktivieren"
 msgid "save attachments"
 msgstr "Anhänge speichern"
 
+msgid "task-added"
+msgstr "Aufgabe hinzugefügt."
+
 msgid "task-state-cancelled"
 msgstr "Storniert"
 
@@ -281,3 +284,4 @@ msgstr "Deaktivieren"
 
 msgid "tasktemplatefolder-transition-inactiv-activ"
 msgstr "Aktivieren"
+
