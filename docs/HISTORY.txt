@@ -5,7 +5,9 @@ Changelog
 4.2.0 (unreleased)
 ------------------
 
-- Refactor quickupload-adapter and creating-documents from template to use commands.
+- Refactor: add command to create documents. Use this command for
+  quickupload-adapter, when creating-documents from template and when extracting
+  documents from emails.
   [deiferni]
 
 - Use checkbox widget to select participations roles.
