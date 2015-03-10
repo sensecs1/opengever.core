@@ -25,11 +25,12 @@ class CreateDocumentCommand(object):
 
     def __init__(self, context, filename, data):
         self.context = context
-        self.filename = filename
         self.data = data
+        self.filename = filename
+        self.title = filename
 
     def execute(self):
-        content = createContent(self.portal_type, title=self.filename)
+        content = createContent(self.portal_type, title=self.title)
 
         # Temporarily acquisition wrap content to make adaptation work
         content = content.__of__(self.context)

@@ -5,7 +5,7 @@ Changelog
 4.2.0 (unreleased)
 ------------------
 
-- Refactor quickupload-adapter to use commands.
+- Refactor quickupload-adapter and creating-documents from template to use commands.
   [deiferni]
 
 - Use checkbox widget to select participations roles.
