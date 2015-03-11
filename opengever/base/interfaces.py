@@ -236,3 +236,6 @@ class IDataCollector(Interface):
         """Deserializes the *data* and changes the *obj* according to the
         data.
         """
+
+class ICheckinCheckoutMenuItem(Interface):
+    """Special menu item type for the checkin/checkout menu."""
