@@ -70,7 +70,9 @@ class IdempotentOperations(Operations):
                        .format(name))
             return
 
-        super(IdempotentOperations, self).create_table(name, *columns, **kw)
+        table = super(IdempotentOperations, self).create_table(
+            name, *columns, **kw)
+        return table
 
 
 class DeactivatedFKConstraint(object):
@@ -123,9 +125,9 @@ class SchemaMigration(UpgradeStep):
     upgradeid = None
 
     def __call__(self):
+        self._tracking_table = None
         self._assert_configuration()
         self._setup_db_connection()
-        self._create_tracking_table()
         self._insert_initial_version()
         if self._has_upgrades_to_install():
             self._log_do_migration()
@@ -170,7 +172,18 @@ class SchemaMigration(UpgradeStep):
         assert len(self.profileid) < 50, 'profileid max length is 50 chars'
 
     def _get_tracking_table(self):
-        return self.metadata.tables.get(TRACKING_TABLE_NAME)
+        """Fetches the tracking table from the DB schema metadata if present,
+        or creates it if necessary.
+
+        Once a reference to the tracking table has been obtained it's memoized
+        in self._tracking_table and reused in further calls to this method.
+        """
+        if self._tracking_table is None:
+            table = self.metadata.tables.get(TRACKING_TABLE_NAME)
+            if table is None:
+                table = self._create_tracking_table()
+            self._tracking_table = table
+        return self._tracking_table
 
     def _current_version(self):
         versions_table = self._get_tracking_table()
@@ -184,15 +197,13 @@ class SchemaMigration(UpgradeStep):
         return self._current_version() < self.upgradeid
 
     def _create_tracking_table(self):
-        if self._get_tracking_table() is not None:
-            return
-
-        self.op.create_table(
+        tracking_table_definition = (
             TRACKING_TABLE_NAME,
             Column('profileid', String(50), primary_key=True),
             Column('upgradeid', Integer, nullable=False),
         )
-        self.refresh_metadata()
+        table = self.op.create_table(*tracking_table_definition)
+        return table
 
     def _insert_initial_version(self):
         versions_table = self._get_tracking_table()

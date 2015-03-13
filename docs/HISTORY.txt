@@ -5,7 +5,17 @@ Changelog
 4.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- SchemaMigration: Fix tracking table creation for DBs supporting transactional DDL:
+
+  If the tracking table is created for the first time, it's not visible in
+  metadata until the transaction has been committed.
+
+  Therefore we need to have a method that tries to fetch an existing tracking
+  table and return it, or if it doesn't exist yet, creates it and then
+  returns the created table.
+
+  Returning the table created by op.create_table requires alembic >= 0.7.0.
+  [lgraf]
 
 
 4.2.0 (2015-03-12)
